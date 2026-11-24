@@ -1,0 +1,16 @@
+[Unit]
+Description=Disposable inbox (receive-only)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/tempmail
+EnvironmentFile=/opt/tempmail/.env
+ExecStart=/usr/bin/python3 /opt/tempmail/tempmail.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
